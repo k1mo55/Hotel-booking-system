@@ -1,4 +1,3 @@
-import { updateMyHotelById } from './../../../frontend/src/api-client';
 import { HotelType } from './../shared/types';
 import { Request, Response } from "express"
 import cloudinary from 'cloudinary'
@@ -22,7 +21,7 @@ const createHotel = async ( req:Request, res:Response)=>{
         await hotel.save();
         res.status(201).send(hotel);
     }catch(err){
-        return res.status(501).json( { message:"Server error" } )
+        return res.status(500).json( { message:"Server error" } )
     }
 }
 
@@ -34,7 +33,7 @@ const getMyHotel  = async (req:Request , res:Response  )=>{
         }
         res.status(200).json(myHotels);
     }catch(err){
-        res.status(501).json({ message:"server error" })
+        res.status(500).json({ message:"server error" })
     }
 }
 
@@ -60,7 +59,7 @@ const updateMyHotel  = async (req:Request , res:Response  )=>{
           res.status(200).json(hotel)
     }
     catch(err){
-        res.status(501).json({ message:"server error" })
+        res.status(500).json({ message:"server error" })
     }
 }
 
@@ -78,7 +77,7 @@ const getHotel  = async (req:Request , res:Response  )=>{
         res.json(hotel);
     }
     catch(err){
-        res.status(501).json({ message:"server error" })
+        res.status(500).json({ message:"server error" })
     }
 }
 
@@ -92,7 +91,7 @@ async function uploadImages(imageFiles: Express.Multer.File[]) {
   
     const imageUrls = await Promise.all(uploadPromises);
     return imageUrls;
-  }
+}
 
 
 

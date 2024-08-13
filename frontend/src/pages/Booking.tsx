@@ -53,7 +53,6 @@ const Booking = () => {
   if (!hotel) {
     return <></>;
   }
-
   return (
     <div className="grid md:grid-cols-[1fr_2fr]">
       <BookingDetailsSummary
